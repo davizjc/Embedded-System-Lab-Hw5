@@ -56,8 +56,9 @@ int main() {
          printf("check point = %d\n",checkpoint);
 
          car.goStraight(-50);
+          printf("continue moving\n");
          ThisThread::sleep_for(1s);
-
+        
           
          if (checkpoint == 4){
             car.stop(); 
@@ -65,7 +66,7 @@ int main() {
             break;
          }
 
-         printf("continue moving\n");
+        
       }
      ThisThread::sleep_for(10ms);
    }
