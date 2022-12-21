@@ -16,7 +16,7 @@ int main() {
    int pattern;
    int checkpoint = 0;
 
-   car.goStraight(50);
+   car.goStraight(-50);
    while(1) {
       car.checkDistance(1);
 
@@ -49,24 +49,20 @@ int main() {
       }
       if (pattern == 0b1111){
          car.stop(); 
-         ThisThread::sleep_for(5s);
+         ThisThread::sleep_for(4s);
 
          printf("car have stop \n");
          checkpoint += 1;
          printf("check point = %d\n",checkpoint);
 
          car.goStraight(-50);
-          printf("continue moving\n");
-         ThisThread::sleep_for(1s);
-        
-          
+         printf("continue moving\n");
+
          if (checkpoint == 4){
             car.stop(); 
-            printf("distance = %f\n", (car.servo0.targetAngle - car.servo0.angle)*6.5*3.14/360);
+            printf("distance = %f\n", abs(((car.servo0.angle)*6.5*3.14/360)));
             break;
          }
-
-        
       }
      ThisThread::sleep_for(10ms);
    }
