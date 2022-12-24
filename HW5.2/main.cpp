@@ -25,27 +25,43 @@ int main() {
       
       if (pattern == 0b1000){   // 8  right  
             car.turn(-50, 0.1);
+            ThisThread::sleep_for(100ms);
+
       }
       if (pattern == 0b1100){   // 12
             car.turn(-50, 0.5);
+            ThisThread::sleep_for(100ms);
+
       }
       if (pattern == 0b0100){   // 4 right alittle
             car.turn(-50, 0.7); 
+            ThisThread::sleep_for(100ms);
+
       }
       if (pattern == 0b0110){   // 6 forward
             car.goStraight(-50);
+            ThisThread::sleep_for(100ms);
+
       }
       if (pattern == 0b0010){   //2 left  alittle
             car.turn(-50, -0.7);
+            ThisThread::sleep_for(100ms);
+
       }
        if (pattern == 0b0011){   // 3
             car.turn(-50, -0.5);
+            ThisThread::sleep_for(100ms);
+
       }
       if (pattern == 0b0001){   ///1  left alot
             car.turn(-50,-0.1);
+            ThisThread::sleep_for(100ms);
+
       }
       if (pattern == 0b0000){   ///0  go backward
             car.goStraight(50);
+            ThisThread::sleep_for(100ms);
+
       }
       if (pattern == 0b1111){
          car.stop(); 
@@ -54,16 +70,20 @@ int main() {
          printf("car have stop \n");
          checkpoint += 1;
          printf("check point = %d\n",checkpoint);
-
-         car.goStraight(-50);
-         printf("continue moving\n");
-
-         if (checkpoint == 4){
+         
+        if (checkpoint == 4){
             car.stop(); 
             printf("distance = %f\n", abs(((car.servo0.angle)*6.5*3.14/360)));
             break;
          }
+
+         car.goStraight(-50);
+         ThisThread::sleep_for(1s);
+
+         printf("continue moving\n");
+
+     
       }
-     ThisThread::sleep_for(10ms);
+     ThisThread::sleep_for(100ms);
    }
 }
